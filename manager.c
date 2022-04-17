@@ -203,7 +203,7 @@ void searchWeight(Product p[], int count) {
     }
   }
   if(scnt == 0) printf("=> 검색된 데이터 없음!");
-  printf("\n\n");
+  printf("\n");
 
 }
 
