@@ -97,3 +97,19 @@ int selectDataNo(Product p[], int count) {
   return no;
 } 
 
+// 파일에 저장하기
+void saveData(Product *p, int count) {
+  FILE *fp;
+  fp = fopen("manager.txt", "wt");
+  for(int i=0; i<count; i++) {
+    if(p[i].price == -1) continue;
+    fprintf(fp, "%s\n", p[i].name);
+    fprintf(fp, "%s\n", p[i].description);
+    fprintf(fp, "%s %d %d\n", p[i].weight, p[i].price, p[i].delivery);
+  }
+  fclose(fp);
+
+  printf("저장됨!\n");
+}
+
+
