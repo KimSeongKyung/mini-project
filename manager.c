@@ -112,4 +112,32 @@ void saveData(Product *p, int count) {
   printf("저장됨!\n");
 }
 
+// 파일에서 데이터 불러오기
+int loadData(Product *p) {
+  int i=0;
+  FILE *fp;
+  fp = fopen("manager.txt", "r");
+  if(fp == NULL) {
+    printf("\n=>파일 없음\n");
+  }
+  else {
+    for(; i<100; i++) {
+    char name[80];
+    fgets(name, sizeof(name), fp);
+   // fgets(p[i].name, sizeof(p->name), fp);
+    if(feof(fp)) break;
+    strcpy(p[i].name, name);
+    p[i].name[strlen(p[i].name)-1] = '\0';
+    fgets(p[i].description, sizeof(p[i].description), fp);
+    p[i].description[strlen(p[i].description)-1] = '\0';
+    fscanf(fp, "%s", p[i].weight);
+    fscanf(fp, "%d", &p[i].price);
+    fscanf(fp, "%d", &p[i].delivery);
+    }
+    fclose(fp);
+    printf("=>로딩 성공!\n");
+  }
+  return i;
+
+}
 
