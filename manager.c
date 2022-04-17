@@ -185,4 +185,25 @@ void searchDelivery(Product p[], int count) {
 
 }
 
+// 해당 무게를 가지는 제품 검색하기
+void searchWeight(Product p[], int count) {
+  int scnt = 0;
+  char search[20];
+
+  printf("검색할 무게는? ");
+  scanf("%s", search);
+
+  printf("\nName Weight Price Delivery Description\n");
+  printf("=========================================\n");
+  for(int i=0; i<count; i++) {
+    if(p[i].price == -1) continue;
+    if(strstr(p[i].weight, search)) {
+      readProduct(p[i]);
+      scnt++;
+    }
+  }
+  if(scnt == 0) printf("=> 검색된 데이터 없음!");
+  printf("\n");
+
+}
 
