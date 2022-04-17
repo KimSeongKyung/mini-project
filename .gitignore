@@ -1,4 +1,6 @@
 *.o
 manager
 manager_debug
+Makefile
+product
 
