@@ -163,3 +163,26 @@ void searchProduct(Product p[], int count) {
 
 }
 
+// 새벽배송하는 제품 검색하기 및 택배배송하는 제품 검색하기
+void searchDelivery(Product p[], int count) {
+  int scnt = 0;
+  int search;
+
+  printf("검색할 배송 방법은?(1: 새벽배송 / 2: 택배배송) ");
+  scanf("%d", &search);
+
+  printf("\nName Weight Price Delivery Description\n");
+  printf("=========================================\n");
+  for(int i=0; i<count; i++) {
+    if(p[i].price == -1) continue;
+    if(p[i].delivery == search) {
+      readProduct(p[i]);
+      scnt++;
+    }
+  }
+  if(scnt == 0) printf("=> 검색된 데이터 없음!");
+  printf("\n");
+
+}
+
+
